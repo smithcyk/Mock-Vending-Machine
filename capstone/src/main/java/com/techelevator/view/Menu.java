@@ -11,8 +11,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
-    public List<Item> readFromFile() throws IOException {
-        File file = new File("catering.csv");
+    public List<Item> readFromFile(String fileName)  {
+        File file = new File(fileName);
         List<Item> cateringItems = new ArrayList<>();
         Item items = new Item();
 

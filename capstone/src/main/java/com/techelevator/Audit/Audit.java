@@ -29,7 +29,7 @@ public class Audit {
         this.writer.flush();
     }
 
-    public void close() { //DOES IT NEED IOEXCEPTION
+    public void close() throws IOException {
         this.writer.close();
     }
 
