@@ -1,5 +1,8 @@
 package com.techelevator.UI;
 
+import com.techelevator.view.PurchaseMenu;
+
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class UserInput {
@@ -28,12 +31,12 @@ public class UserInput {
     }
 
     public static String purchaseMenuOptionsDisplay() {
-
+        PurchaseMenu purchaseMenu = new PurchaseMenu();
         System.out.println("(M) Feed Money.");
         System.out.println("(S) Select item.");
         System.out.println("(F) Finish transaction");
 
-        //System.out.println("Current money provided: " + balance);
+        System.out.println("Current money provided: " + purchaseMenu.getBalance());
 
         System.out.println("Please select an option ");
         String selectedOption = userInput.nextLine();
@@ -50,6 +53,13 @@ public class UserInput {
                 return "";
         }
 
+    }
+
+    public static BigDecimal feedMoneyIntoMachine(){
+        System.out.println("Feed money into catering machine. Please enter either $1, $5, $10, or $20: ");
+        String userInputMoney = userInput.nextLine();
+        BigDecimal moneyEntered = new BigDecimal(userInputMoney);
+        return moneyEntered;
     }
 
 }

@@ -16,6 +16,7 @@ public class Menu {
         String fileName = "catering.csv";
         List<Item> items = readFromFile(fileName);
         boolean isRunning = true;
+        PurchaseMenu purchaseMenu = new PurchaseMenu();
 
         while(isRunning) {
             UserOutput.displayMainMenu();
@@ -24,7 +25,7 @@ public class Menu {
             if(choice.equals("displayCatering")) {
                 listAllItems(items);
             } else if (choice.equals("purchaseItem")) {
-
+                purchaseMenu.runPurchaseMenu();
             } else if (choice.equals("exit")) {
                 System.out.println("Have a good day.");
                 isRunning = false;

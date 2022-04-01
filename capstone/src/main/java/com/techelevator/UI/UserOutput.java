@@ -16,7 +16,7 @@ public class UserOutput {
 
     public static void listItems(List<Item> items) {
         for (Item item: items) {
-            System.out.println(item.getSlotIdentifier() + item.getItemName() + item.getPrice() + item.getQuantity());
+            System.out.println(item.getSlotIdentifier() + " " + item.getItemName() +" $" + item.getPrice() +" Quantity: " + item.getQuantity());
         }
     }
 
