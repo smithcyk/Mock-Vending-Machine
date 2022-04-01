@@ -9,6 +9,7 @@ public class CaTEringCapstoneCLI {
 	private Menu menu;
 
 	public CaTEringCapstoneCLI(Menu menu) {
+
 		this.menu = menu;
 	}
 
