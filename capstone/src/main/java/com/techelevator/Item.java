@@ -2,14 +2,14 @@ package com.techelevator;
 
 import java.math.BigDecimal;
 
-    public class Items {
+    public class Item {
     private String slotIdentifier;
     private String itemName;
     private String category;
     private BigDecimal price;
     private int quantity = 7;
 
-    public Items(String slotIdentifier, String itemName, String category, BigDecimal price, int quantity){
+    public Item(String slotIdentifier, String itemName, String category, BigDecimal price, int quantity){
         this.slotIdentifier = slotIdentifier;
         this.itemName = itemName;
         this.category = category;
@@ -17,7 +17,7 @@ import java.math.BigDecimal;
         this.quantity = quantity;
 
     }
-    public Items(){
+    public Item(){
 
     }
 
