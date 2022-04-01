@@ -1,11 +1,12 @@
 package com.techelevator.UI;
 
-import com.techelevator.view.PurchaseMenu;
+import com.techelevator.view.Menu;
 
 import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class UserInput {
+
     private static Scanner userInput = new Scanner(System.in);
 
     public static String menuOptionsDisplay() {
@@ -31,16 +32,15 @@ public class UserInput {
     }
 
     public static String purchaseMenuOptionsDisplay() {
-        PurchaseMenu purchaseMenu = new PurchaseMenu();
+        Menu menu = new Menu();
         System.out.println("(M) Feed Money.");
         System.out.println("(S) Select item.");
         System.out.println("(F) Finish transaction");
 
-        System.out.println("Current money provided: " + purchaseMenu.getBalance());
-
         System.out.println("Please select an option ");
         String selectedOption = userInput.nextLine();
         String option = selectedOption.trim().toUpperCase();
+
 
         switch (option) {
             case "M":
@@ -54,6 +54,15 @@ public class UserInput {
         }
 
     }
+
+    public static void selectItemForPurchase() {
+
+        System.out.println("Please, select an item. (A1 - format)");
+
+        String selectedItem = userInput.nextLine();
+        String itemIdentifier = selectedItem.trim().toUpperCase();
+    }
+
 
     public static BigDecimal feedMoneyIntoMachine(){
         System.out.println("Feed money into catering machine. Please enter either $1, $5, $10, or $20: ");
