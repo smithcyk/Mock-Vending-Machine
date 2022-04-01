@@ -13,9 +13,6 @@ public class MenuTest {
     @Test
     public void the_catering_file_should_return_correct_list_size() {
         //arrange
-//        List<Item> testFileToList = new List<Item>() {
-//        }
-//        File file = new File();
         Menu testMenu = new Menu();
         String testFileName = "test.csv";
 
@@ -40,7 +37,7 @@ public class MenuTest {
         Assert.assertEquals("Popcorn", actualResults.get(0).getItemName());
         Assert.assertEquals("C1", actualResults.get(0).getSlotIdentifier());
         Assert.assertEquals("Munchy", actualResults.get(0).getCategory());
-//        Assert.assertEquals(new BigDecimal("1.75"), actualResults.get(0).getPrice());
+       //Assert.assertEquals("1.75", actualResults.get(0).getPrice());
 
     }
 }

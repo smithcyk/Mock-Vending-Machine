@@ -11,11 +11,36 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
+
+    public void runMainMenu() {
+        String fileName = "catering.csv";
+        List<Item> items = readFromFile(fileName);
+        boolean isRunning = true;
+
+        while(isRunning) {
+            UserOutput.displayMainMenu();
+            String choice = UserInput.menuOptionsDisplay();
+
+            if(choice.equals("displayCatering")) {
+                listAllItems(items);
+            } else if (choice.equals("purchaseItem")) {
+
+            } else if (choice.equals("exit")) {
+                System.out.println("Have a good day.");
+                isRunning = false;
+            }else {
+                System.out.println("Please enter valid option");
+                isRunning = false;
+            }
+        }
+
+    }
+
+
     public List<Item> readFromFile(String fileName)  {
         File file = new File(fileName);
         List<Item> cateringItems = new ArrayList<>();
         Item items = new Item();
-
 //TESTS
 
         try{
@@ -33,7 +58,8 @@ public class Menu {
     }
 
     //use after D
-    private void listAllItems(List<Item> items) {
+    public void listAllItems(List<Item> items) {
         UserOutput.listItems(items);
     }
+
 }

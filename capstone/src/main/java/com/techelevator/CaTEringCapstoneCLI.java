@@ -19,8 +19,6 @@ public class CaTEringCapstoneCLI {
 		cli.run();
 	}
 
-//TESTS-Call menu listAllItems to verify
-
 	public void run() {
 		while (true) {
 			//  to do -- build out main menu
