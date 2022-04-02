@@ -62,7 +62,7 @@ public class Menu {
                     balance = balance.subtract(item.getPrice());
                     System.out.println(item.getItemName() + " $" + item.getPrice() + " $" + balance);
                     dispenseItemWithItemMessage(item);
-                    
+
                     //audit file
                 } else {
                     System.out.println("Transaction cannot be completed");
