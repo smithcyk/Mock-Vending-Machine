@@ -25,7 +25,7 @@ public class Audit {
     }
 
     public void write(String logMessage) {
-        this.writer.print(logMessage);
+        this.writer.println(logMessage);
         this.writer.flush();
     }
 
