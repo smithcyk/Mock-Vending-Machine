@@ -51,7 +51,7 @@ public class Menu {
             if (choice.equals("feedMoney")) {
                 BigDecimal moneyToAdd = UserInput.feedMoneyIntoMachine();
                 balance = balance.add(moneyToAdd);
-                audit.write(LocalDateTime.now() + "MONEY FED: " + moneyToAdd + getBalance());
+                audit.write(LocalDateTime.now().toString() + " " + "MONEY FED: $" + moneyToAdd + ".00 $"+ getBalance());
                 System.out.println("Current money provided: " + getBalance());
                 runPurchaseMenu();
             } else if (choice.equals("selectItem")) {
@@ -69,29 +69,39 @@ public class Menu {
 
     }
 
-    public void verifyItemIdentifier(String itemIdentifier, List<Item> items) {
+    public void verifyItemIdentifierExists(String itemIdentifier, List<Item> items) {
         UserInput userInput = new UserInput();
-        for (Item item : items) {
-
-            if (item.getSlotIdentifier().equals(itemIdentifier) && item.getQuantity() > 0) {
-
-                //Related to question we have on balance
-                if (item.getCategory().equalsIgnoreCase("munchy")) {
-                    System.out.println("Munchy, Munchy, so Good!");
-                } else if (item.getCategory().equalsIgnoreCase("sandwich")) {
-
-                }
-
-            } else if (item.getSlotIdentifier().equals(itemIdentifier) && item.getQuantity() == 0) {
-
-                System.out.println("NO LONGER AVAILABLE");
-
-            } else {
-                System.out.println("Item does not exist");
-            }
-        }
+//        for (Item item : items) {
+//            if (!item.getSlotIdentifier().equals(itemIdentifier)){
+//                itemIdentifier.equals(item.getSlotIdentifier());
+//            }
+//            System.out.println("Invalid entry");
+//        }
+//
     }
 
+// && item.getQuantity() > 0
+
+    public void checkIfQuantityIsSufficient(){
+
+    }
+
+//    }
+//        else if {
+//
+//        System.out.println("NO LONGER AVAILABLE");
+//
+public void dispenseItem() {
+//    if (item.getCategory().equalsIgnoreCase("munchy")) {
+//        System.out.println("Munchy, Munchy, so Good!");
+//    } else if (item.getCategory().equalsIgnoreCase("sandwich")) {
+//        System.out.println("Sandwich So Delicious, Yum!");
+//        } else if (item.getCategery().equalsIgnoreCase("drink")){
+//        System.out.println("Drinky, Drinky, Slurp Slurp!");
+//    } else if (item.getCategory().equalsIgnoreCase("dessert")){
+//        System.out.println("Sugar, Sugar, so Sweet!");
+//    }
+}
 
     public BigDecimal getBalance() {
         return balance;
