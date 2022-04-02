@@ -55,13 +55,13 @@ public class UserInput {
 
     }
 
-    public static void selectItemForPurchase() {
+    public static String selectItemForPurchase() {
 
         System.out.println("Please, select an item. (A1 - format)");
 
         String selectedItem = userInput.nextLine();
         String itemIdentifier = selectedItem.trim().toUpperCase();
-
+        return itemIdentifier;
     }
 
 
