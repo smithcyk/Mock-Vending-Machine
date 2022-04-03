@@ -57,7 +57,7 @@ public class UserInput {
 
     public static String selectItemForPurchase() {
 
-        System.out.println("Please, select an item. (A1 - format)");
+        System.out.println("Please, select an item. (Please enter a letter and number, example A1)");
 
         String selectedItem = userInput.nextLine();
         String itemIdentifier = selectedItem.trim().toUpperCase();
