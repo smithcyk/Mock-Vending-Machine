@@ -18,7 +18,7 @@ public class Menu {
     String fileName = "catering.csv";
     List<Item> items = readFromFile(fileName);
     public BigDecimal balance = new BigDecimal("0.00");
-    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss a");
+    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss a");
     LocalDateTime now = LocalDateTime.now();
     String dateTimeString = now.format(formatter);
 
@@ -36,6 +36,7 @@ public class Menu {
             } else if (choice.equals("exit")) {
                 System.out.println("Have a good day.");
                 isRunning = false;
+                runMainMenu();
             } else {
                 System.out.println("Please enter valid option");
                 isRunning = false;
@@ -62,12 +63,14 @@ public class Menu {
                 listAllItems(items);
                 String slotInput = UserInput.selectItemForPurchase();
                 Item item = verifyItemIdentifierExists(slotInput, items);
-                if (item != null && checkIfQuantityIsSufficient(item) && isTheBalanceGreaterOrEqualToItemPrice(item)) {
+                if (item != null && checkIfQuantityIsSufficient(item) && isTheBalanceGreaterOrEqualToItemPrice(item, balance)) {
                     balance = balance.subtract(item.getPrice());
                     System.out.println(item.getItemName() + " $" + item.getPrice() + " $" + balance);
                     dispenseItemWithItemMessage(item);
                     item.setQuantity(item.getQuantity() - 1);
                     audit.write(dateTimeString + " " + item.getItemName() + " " + item.getSlotIdentifier() + " $" + balance.add(item.getPrice()) + " $" + balance);
+                } else if (item != null && !checkIfQuantityIsSufficient(item)){
+                    System.out.println("NO LONGER AVAILABLE");
                 } else {
                     System.out.println("Transaction cannot be completed");
                 }
@@ -76,14 +79,14 @@ public class Menu {
                 System.out.println("Have a good day.");
                 audit.write(dateTimeString + " Change Given: $" + balance + " $0.00");
                 balance = new BigDecimal("0.00");
-                //runMainMenu();
+                runMainMenu();
             } else {
                 System.out.println("Please enter valid option");
             }
         }
     }
 
-    public boolean isTheBalanceGreaterOrEqualToItemPrice(Item item) {
+    public boolean isTheBalanceGreaterOrEqualToItemPrice(Item item, BigDecimal balance) {
         if (balance.compareTo(item.getPrice()) == 0 || balance.compareTo(item.getPrice()) == 1) {
             return true;
         }
@@ -126,19 +129,19 @@ public class Menu {
         int dimes = 0;
         int nickels = 0;
 
-        while (balanceDouble > 0) {
-            if (balanceDouble > 1) {
+        while (balanceDouble > 0.00) {
+            if (balanceDouble >= 1.00) {
                 dollars++;
-                balanceDouble -= 1;
-            } else if (balanceDouble < 1 && balanceDouble >= .25) {
+                balanceDouble = Math.round((balanceDouble -= 1.00) * 100.0)/100.0;
+            } else if (balanceDouble < 1.00 && balanceDouble >= .25) {
                 quarters++;
-                balanceDouble -= .25;
+                balanceDouble = Math.round((balanceDouble -= .25) * 100.0)/100.0;
             } else if (balanceDouble < .25 && balanceDouble >= .10) {
                 dimes++;
-                balanceDouble -= .10;
+                balanceDouble = Math.round((balanceDouble -= .10) * 100.0)/100.0;
             } else if (balanceDouble >= .05) {
                 nickels++;
-                balanceDouble -= .05;
+                balanceDouble = Math.round((balanceDouble -= .05) * 100.0)/100.0;
             }
         }
         System.out.println("Change Given: " + dollars + " dollars, " + quarters + " quarters, " + dimes + " dimes, " + nickels + " nickels.");
